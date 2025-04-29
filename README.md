@@ -1,6 +1,6 @@
 ## Next.js Partial Prerendering - Netlify Build Error
 
-Check commit 1c0f6af065d32275e719a952b3d0b78dd51f7775 to confirm the diff that caused the error.
+[Check commit 1c0f6af065d32275e719a952b3d0b78dd51f7775 to confirm the diff that caused the error.](https://github.com/simonbaggu/next-partial-prerendering/commit/1c0f6af065d32275e719a952b3d0b78dd51f7775)
 
 #1. Build works on Netlify with version next@15.0.0-canary.67,
 
