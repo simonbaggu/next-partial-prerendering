@@ -25,13 +25,9 @@ const dummyItems = [
 
 // Function to fetch dummy data with simulated delay
 async function getItem(id) {
-  const item = dummyItems.find((i) => i.id === id);
-  if (item) {
-    // Simulate network delay based on the item's loadTime
-    await new Promise((resolve) => setTimeout(resolve, item.loadTime));
-    return item;
-  }
-  return null;
+  const duck = await fetch('https://random-d.uk/api/v2/random');
+  const duckJson = await duck.json();
+  return duckJson;
 }
 
 // --- Content Component ---
@@ -39,6 +35,7 @@ async function getItem(id) {
 export default async function ItemContent({ id }) {
   // Fetch data inside the component wrapped by Suspense
   const item = await getItem(id);
+  const { message, url } = item;
 
   // Handle case where item might not be found after delay
   if (!item) {
@@ -50,11 +47,8 @@ export default async function ItemContent({ id }) {
 
   return (
     <div className="p-4 border border-gray-400 rounded">
-      <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-      <p>{item.description}</p>
-      <p className="text-sm text-gray-500 mt-2">
-        (Simulated load time: {item.loadTime}ms)
-      </p>
+      <h1>{message}</h1>
+      <img src={url} alt="Random duck" />
     </div>
   );
 }
