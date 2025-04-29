@@ -1,12 +1,9 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import ItemContent, { dummyItems } from './item-content';
-import Ping from '#/components/ping';
+import { Ping } from '#/components/ping';
 
 export async function generateStaticParams() {
-  // Ensure this runs async if needed, though not strictly necessary for dummy data
-  await new Promise((resolve) => setTimeout(resolve, 10));
-  // Use the imported dummyItems
   return dummyItems.map((item) => ({
     id: item.id,
   }));
@@ -27,9 +24,15 @@ export default async function ItemPage({ params }) {
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold text-white mb-6">Item Details Page</h1>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div>
+            <Ping /> Loading...
+          </div>
+        }
+      >
         {/* Use the imported ItemContent component */}
-        <ItemContent />
+        <ItemContent id={id} />
       </Suspense>
 
       <div className="mt-6 text-gray-400">
