@@ -25,7 +25,9 @@ const dummyItems = [
 
 // Function to fetch dummy data with simulated delay
 async function getItem(id) {
-  const duck = await fetch('https://random-d.uk/api/v2/random');
+  const duck = await fetch('https://random-d.uk/api/v2/random', {
+    cache: 'no-store',
+  });
   const duckJson = await duck.json();
   return duckJson;
 }
