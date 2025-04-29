@@ -58,7 +58,8 @@ function ItemSkeleton() {
 
 // --- Content Component ---
 // This component receives the *already fetched* item data
-async function ItemContent({ id }) {
+async function ItemContent(params) {
+  const { id } = await params;
   // Fetch data inside the component wrapped by Suspense
   const item = await getItem(id);
 
@@ -82,8 +83,8 @@ async function ItemContent({ id }) {
 }
 
 // --- Page Component ---
-export default function ItemPage({ params }) {
-  const { id } = params;
+export default async function ItemPage({ params }) {
+  const { id } = await params;
 
   // Check if the ID is one of the known dummy IDs *before* suspending.
   // This prevents Suspense for invalid IDs leading to `notFound`.
