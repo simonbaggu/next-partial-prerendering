@@ -1,23 +1,66 @@
-## Next.js Partial Prerendering
+## Next.js Partial Prerendering - Netlify Build Error
 
-This is a demo of [Next.js](https://nextjs.org) using [Partial Prerendering](https://nextjs.org/docs/app/api-reference/next-config-js/ppr).
+#1. Build works on Netlify with version next@15.0.0-canary.67,
 
-This template uses the new Next.js [App Router](https://nextjs.org/docs/app). This includes support for enhanced layouts, colocation of components, tests, and styles, component-level data fetching, and more.
+3:16:27 PM: ❯ Using Next.js Runtime - v5.10.7
+3:16:28 PM: Next.js cache restored
+3:16:28 PM: ​
+3:16:28 PM: Build command from Netlify app  
+3:16:28 PM: ────────────────────────────────────────────────────────────────
+3:16:28 PM: ​
+3:16:28 PM: $ pnpm run build
+3:16:29 PM: > @ build /opt/build/repo
+3:16:29 PM: > next build
+3:16:29 PM: ▲ Next.js 15.0.0-canary.67
+3:16:29 PM: - Experiments (use with caution):
+3:16:29 PM: · ppr
+3:16:29 PM: Creating an optimized production build ...
+3:16:32 PM: ✓ Compiled successfully
+3:16:32 PM: Linting and checking validity of types ...
+3:16:33 PM: Collecting page data ...
+3:16:34 PM: Generating static pages (0/10) ...
+3:16:35 PM: ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+3:16:35 PM: ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+3:16:35 PM: ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+3:16:35 PM: Generating static pages (2/10)
+3:16:35 PM: Generating static pages (4/10)
+3:16:35 PM: ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+3:16:35 PM: Generating static pages (7/10)
+3:16:35 PM: ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+3:16:35 PM: ✓ Generating static pages (10/10)
+3:16:35 PM: Finalizing page optimization ...
+3:16:35 PM: Collecting build traces ...
+3:16:44 PM: Route (app) Size First Load JS
+3:16:44 PM: ┌ ○ / 8.96 kB 101 kB
+3:16:44 PM: ├ ○ /\_not-found 145 B 91.7 kB
+3:16:44 PM: ├ ◐ /items/[id] 145 B 91.7 kB
+3:16:44 PM: ├ ├ /items/1
+3:16:44 PM: ├ ├ /items/2
+3:16:44 PM: ├ └ /items/3
+3:16:44 PM: ├ ○ /opengraph-image.png 0 B 0 B
+3:16:44 PM: └ ○ /twitter-image.png 0 B 0 B
+3:16:44 PM: + First Load JS shared by all 91.6 kB
+3:16:44 PM: ├ chunks/337-e31c1877b90d1764.js 37.6 kB
+3:16:44 PM: ├ chunks/9c6597ea-9a3820804d8c691a.js 52.1 kB
+3:16:44 PM: └ other shared chunks (total) 1.85 kB
+3:16:44 PM: ○ (Static) prerendered as static content
+3:16:44 PM: ◐ (Partial Prerender) prerendered as static HTML with dynamic server-streamed content
+3:16:45 PM: ​
+3:16:45 PM: (build.command completed in 16s)
+3:16:45 PM: Next.js cache saved
+3:16:45 PM: Next.js cache saved
+3:16:45 PM: ​
+3:16:45 PM: Functions bundling  
+3:16:45 PM: ────────────────────────────────────────────────────────────────
+3:16:45 PM: ​
+3:16:45 PM: Packaging Functions from .netlify/functions-internal directory:
+3:16:45 PM: - **_netlify-server-handler/_**netlify-server-handler.mjs
+3:16:45 PM: ​
+3:16:47 PM: ​
+3:16:47 PM: (Functions bundling completed in 1.8s)
+3:16:48 PM: ​
+3:17:01 PM: (Netlify Build completed in 33.7s)
+3:17:01 PM: Section completed: building
+3:17:46 PM: Finished processing build request in 1m39.461s
 
-It also uses the experimental Partial Prerendering feature available in Next.js 14. Partial Prerendering combines ultra-quick static edge delivery with fully dynamic capabilities and we believe it has the potential to [become the default rendering model for web applications](https://vercel.com/blog/partial-prerendering-with-next-js-creating-a-new-default-rendering-model), bringing together the best of static site generation and dynamic delivery.
-
-> ⚠️ Please note that PPR is an experimental technology that is not recommended for production. You may run into some DX issues, especially on larger code bases.
-
-## How it works
-
-The index route `/` uses Partial Prerendering through:
-
-1. Enabling the experimental flag in `next.config.js`.
-
-```js
-experimental: {
-    ppr: true,
-},
-```
-
-2. Using `<Suspense />` to wrap Dynamic content.
+#2. Build fails on Netlify with version next@15.4.0-canary.14
